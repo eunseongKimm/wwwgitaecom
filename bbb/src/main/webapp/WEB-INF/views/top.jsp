@@ -10,7 +10,7 @@
 
 <header>
 <header style="text-align: center;">
-	<h1>학생성적관리 프로그램 ver 1.0</h1>
+	<h1>프로그램 수정 완료</h1>
 </header>
 
 <nav class="navbar navbar-inverse">
