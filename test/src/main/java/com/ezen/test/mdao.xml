@@ -1,0 +1,47 @@
+<!DOCTYPE mapper
+    PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+    "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.ezen.test.Mservice">
+
+<insert id="msave" parameterType="com.ezen.test.MDTO">
+insert into test0926 values(#{param1},#{param2},#{param3},#{param4},#{param5},#{param6},#{param7},#{param8})
+</insert>
+<select id="mout" resultType="com.ezen.test.MDTO">
+select * from test0926
+</select>
+<select id="idcheck" resultType="int">
+select count(*) from test0926 where id=#{param1}
+</select>
+<select id="logina" resultType="com.ezen.test.MDTO">
+select * from test0926 where id=#{param1} and pw=#{param2} 
+</select>
+<select id="cntnotice" resultType="int">
+   select count(*)from test0926
+</select>
+<select id="selectnotice" resultType="com.ezen.test.MDTO">
+   select * from (
+   select rownum rn,A.* from(  
+   select * from test0926 order by id DESC, mname asc)A)
+   where rn between #{start} AND #{end}
+</select>
+<delete id="deletea">
+delete from test0926 where id=#{param1}
+</delete>
+<select id="modia" resultType="com.ezen.test.MDTO">
+select * from test0926 where id=#{param1}
+</select>
+<update id="modifya">
+update test0926 set mname=#{mname}, tel=#{tel}, sb=#{sb}, home=#{home}, content=#{content} where id=#{id}
+</update>
+<select id="searchid" resultType="com.ezen.test.MDTO">
+select * from test0926 where id like '%'||#{param1}||'%'
+</select>
+<select id="searchmname" resultType="com.ezen.test.MDTO">
+select * from test0926 where mname like '%'||#{param1}||'%'
+</select>
+<select id="searchhome" resultType="com.ezen.test.MDTO">
+select * from test0926 where home like '%'||#{param1}||'%'
+</select>
+
+</mapper>
