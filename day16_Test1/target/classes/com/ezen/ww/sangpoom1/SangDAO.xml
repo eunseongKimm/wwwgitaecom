@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE mapper
+    PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+    "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.ezen.ww.sangpoom1.SangService">
+
+<insert id="sanginsert" parameterType="com.ezen.ww.sangpoom1.SangDTO">
+insert into sangpoom0926 values(#{param1},#{param2},#{param3},#{param4},#{param5},
+#{param6},#{param7},0)
+</insert>
+
+<select id="sangout" resultType="com.ezen.ww.sangpoom1.SangDTO">
+select spnum,spname,sangho,to_char(spdate,'dl')as spdate,scontent,sprice,spimage,cnt from sangpoom0926
+</select>
+
+<select id="sangdetail" resultType="com.ezen.ww.sangpoom1.SangDTO">
+select * from sangpoom0926 
+where spnum = #{param1}
+</select>
+
+<update id="cntup">
+update 
+sangpoom0926 
+set cnt = cnt+1 where spnum = #{param1}
+</update>
+
+<delete id="sangdelete">
+delete 
+from sangpoom0926
+where spnum = #{param1}
+</delete>
+
+<select id="sangout2" resultType="com.ezen.ww.sangpoom1.SangDTO">
+select spname,sum(sprice)as mae, count(spname) as su 
+from sangpoom0926
+group by spname
+</select>
+
+<select id="sangout3" resultType="com.ezen.ww.sangpoom1.SangDTO">
+select spdate,sum(sprice)as mae, count(spname) as su 
+from sangpoom0926
+group by spdate
+order by spdate desc
+</select>
+
+<select id="cntnotice" resultType="int">
+   select count(*)from member0920
+</select>
+
+<!-- 페이징처리에서 게시글 조회 22222222 -->
+<select id="selectnotice" resultType="com.ezen.ww.sangpoom1.SangDTO">
+   select * from (
+   select rownum rn,A.spnum,spname,sangho,to_char(spdate,'dl')as spdate,scontent,sprice,spimage,cnt from(
+   select * from sangpoom0926
+   order by spnum asc)A)
+   where rn between #{start} AND #{end}
+</select>
+
+<select id="sangsearchspnum" resultType="com.ezen.ww.sangpoom1.SangDTO">
+select spnum,spname,sangho,to_char(spdate,'dl')as spdate,scontent,sprice,spimage,cnt 
+from sangpoom0926 
+where spnum like '%' || #{param1} || '%'
+</select>
+
+<select id="sangsearchspname" resultType="com.ezen.ww.sangpoom1.SangDTO">
+select spnum,spname,sangho,to_char(spdate,'dl')as spdate,scontent,sprice,spimage,cnt 
+from sangpoom0926 
+where spname like '%' || #{param1} || '%'
+</select>
+
+<select id="sangmodify1" resultType="com.ezen.ww.sangpoom1.SangDTO">
+select * from sangpoom0926 where spnum = #{param1}
+</select>
+
+<update id="sangmodify2">
+update sangpoom0926 set spname=#{param2},sangho=#{param3},spdate=#{param4},scontent=#{param5},sprice=#{param6},spimage=#{param7} where spnum=#{param1}
+</update>
+
+</mapper>

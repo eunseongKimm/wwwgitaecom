@@ -55,36 +55,6 @@
 		<put-attribute name="body" value="/WEB-INF/views/sangmodifyview.jsp"/>
 	</definition>
 	
-	<definition name="loginform" extends="baseLayout">
-		<put-attribute name="title" value="메인화면"/>
-		<put-attribute name="body" value="/WEB-INF/views/loginform.jsp"/>
-	</definition>
-	
-	<definition name="merror" extends="baseLayout">
-		<put-attribute name="title" value="메인화면"/>
-		<put-attribute name="body" value="/WEB-INF/views/merror.jsp"/>
-	</definition>
-	
-	<definition name="minput" extends="baseLayout">
-		<put-attribute name="title" value="메인화면"/>
-		<put-attribute name="body" value="/WEB-INF/views/minput.jsp"/>
-	</definition>
-	
-	<definition name="moutput" extends="baseLayout">
-		<put-attribute name="title" value="메인화면"/>
-		<put-attribute name="body" value="/WEB-INF/views/moutput.jsp"/>
-	</definition>
-	
-	<definition name="modiview" extends="baseLayout">
-		<put-attribute name="title" value="메인화면"/>
-		<put-attribute name="body" value="/WEB-INF/views/modiview.jsp"/>
-	</definition>
-	
-	<definition name="searchform" extends="baseLayout">
-		<put-attribute name="title" value="메인화면"/>
-		<put-attribute name="body" value="/WEB-INF/views/searchform.jsp"/>
-	</definition>
-	
 	
 	
 	
