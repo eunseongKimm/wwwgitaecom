@@ -4,9 +4,6 @@ import java.text.DateFormat;
 import java.util.Date;
 import java.util.Locale;
 
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpSession;
-
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Controller;
@@ -18,10 +15,8 @@ import org.springframework.web.bind.annotation.RequestMethod;
 public class HomeController 
 {
 	@RequestMapping(value="/")
-	public String main(HttpServletRequest request)
+	public String main()
 	{
-		HttpSession hs = request.getSession();
-		hs.setAttribute("loginstate", false);
 		return "main";
 	}
 	
